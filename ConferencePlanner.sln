@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BC456248-18D5-4406-AB95-7BB9A96DD7F4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConferencePlanner.Web.GraphQL", "src\ConferencePlanner.Web.GraphQL\ConferencePlanner.Web.GraphQL.csproj", "{6436FFFB-64DD-4297-8DB8-F8B9FB1DD45F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferencePlanner.Data", "src\ConferencePlanner.Data\ConferencePlanner.Data.csproj", "{F76676AB-876F-487C-97C6-F28122D25642}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6436FFFB-64DD-4297-8DB8-F8B9FB1DD45F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6436FFFB-64DD-4297-8DB8-F8B9FB1DD45F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6436FFFB-64DD-4297-8DB8-F8B9FB1DD45F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6436FFFB-64DD-4297-8DB8-F8B9FB1DD45F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F76676AB-876F-487C-97C6-F28122D25642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F76676AB-876F-487C-97C6-F28122D25642}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F76676AB-876F-487C-97C6-F28122D25642}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F76676AB-876F-487C-97C6-F28122D25642}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6436FFFB-64DD-4297-8DB8-F8B9FB1DD45F} = {BC456248-18D5-4406-AB95-7BB9A96DD7F4}
+		{F76676AB-876F-487C-97C6-F28122D25642} = {BC456248-18D5-4406-AB95-7BB9A96DD7F4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {244D6ADF-F432-4B6D-892B-41642B5A892C}
+	EndGlobalSection
+EndGlobal
