@@ -1,13 +1,15 @@
 ﻿using ConferencePlanner.Data.Models;
 using ConferencePlanner.Data.Persistence;
+using ConferencePlanner.Web.GraphQL.Extensions;
 
 namespace ConferencePlanner.Web.GraphQL;
 
 public class Mutation
 {
+    [UseConferencePlannerDbContext]
     public async Task<AddSpeakerPayload> AddSpeakerAsync(
         AddSpeakerInput input,
-        [Service] ConferencePlannerDbContext context)
+        [ScopedService] ConferencePlannerDbContext context)
     {
         var speaker = new Speaker
         {
