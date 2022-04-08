@@ -9,11 +9,11 @@ builder.Services.AddPooledDbContextFactory<ConferencePlannerDbContext>(
 
 builder.Services
     .AddGraphQLServer()
+    .AddGlobalObjectIdentification()
     .AddQueries()
     .AddMutations()
     .AddSubscriptions()
     .AddTypes()
-    .AddGlobalObjectIdentification()
     .AddFiltering()
     .AddSorting()
     .AddInMemorySubscriptions()
