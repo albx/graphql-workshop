@@ -21,6 +21,10 @@ public class TrackType : ObjectType<Track>
             .ResolveWith<TrackResolvers>(t => t.GetSessionsAsync(default!, default!, default!, default))
             .UseDbContext<ConferencePlannerDbContext>()
             .Name("sessions");
+
+        descriptor
+            .Field(t => t.Name)
+            .UseUpperCase();
     }
 
     internal class TrackResolvers
