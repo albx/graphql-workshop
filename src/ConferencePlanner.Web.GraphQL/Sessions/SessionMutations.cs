@@ -1,13 +1,14 @@
 ﻿using ConferencePlanner.Data.Models;
 using ConferencePlanner.Data.Persistence;
 using ConferencePlanner.Web.GraphQL.Common;
+using ConferencePlanner.Web.GraphQL.Extensions;
 
 namespace ConferencePlanner.Web.GraphQL.Sessions;
 
 [ExtendObjectType("Mutation")]
 public class SessionMutations
 {
-    [UseApplicationDbContext]
+    [UseConferencePlannerDbContext]
     public async Task<AddSessionPayload> AddSessionAsync(
         AddSessionInput input,
         [ScopedService] ConferencePlannerDbContext context,
@@ -45,7 +46,7 @@ public class SessionMutations
         return new AddSessionPayload(session);
     }
 
-    [UseApplicationDbContext]
+    [UseConferencePlannerDbContext]
     public async Task<ScheduleSessionPayload> ScheduleSessionAsync(
         ScheduleSessionInput input,
         [ScopedService] ConferencePlannerDbContext context)

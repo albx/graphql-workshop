@@ -2,6 +2,7 @@
 using ConferencePlanner.Data.Persistence;
 using ConferencePlanner.Web.GraphQL.Common;
 using ConferencePlanner.Web.GraphQL.DataLoader;
+using ConferencePlanner.Web.GraphQL.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace ConferencePlanner.Web.GraphQL.Sessions;
@@ -30,7 +31,7 @@ public class ScheduleSessionPayload : SessionPayloadBase
         return await trackById.LoadAsync(Session.Id, cancellationToken);
     }
 
-    [UseApplicationDbContext]
+    [UseConferencePlannerDbContext]
     public async Task<IEnumerable<Speaker>?> GetSpeakersAsync(
         [ScopedService] ConferencePlannerDbContext dbContext,
         SpeakerByIdDataLoader speakerById,

@@ -1,6 +1,7 @@
 ﻿using ConferencePlanner.Web.GraphQL.DataLoader;
 using ConferencePlanner.Web.GraphQL.Sessions;
 using ConferencePlanner.Web.GraphQL.Speakers;
+using ConferencePlanner.Web.GraphQL.Tracks;
 using ConferencePlanner.Web.GraphQL.Types;
 using HotChocolate.Execution.Configuration;
 
@@ -12,7 +13,9 @@ public static class RequestExecutorBuilderExtensions
     {
         builder
             .AddQueryType(q => q.Name("Query"))
-            .AddTypeExtension<SpeakerQueries>();
+            .AddTypeExtension<SpeakerQueries>()
+            .AddTypeExtension<SessionQueries>()
+            .AddTypeExtension<TrackQueries>();
 
         return builder;
     }
@@ -22,7 +25,8 @@ public static class RequestExecutorBuilderExtensions
         builder
             .AddMutationType(m => m.Name("Mutation"))
             .AddTypeExtension<SpeakerMutations>()
-            .AddTypeExtension<SessionMutations>();
+            .AddTypeExtension<SessionMutations>()
+            .AddTypeExtension<TrackMutations>();
 
         return builder;
     }
