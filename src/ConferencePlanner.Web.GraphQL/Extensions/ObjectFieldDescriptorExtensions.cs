@@ -8,8 +8,8 @@ public static class ObjectFieldDescriptorExtensions
         where TContext : DbContext
     {
         descriptor.UseScopedService(
-            create: provider => provider.GetRequiredService<IDbContextFactory<TContext>>().CreateDbContext(),
-            disposeAsync: (provider, ctx) => ctx.DisposeAsync());
+            create: provider => provider.GetRequiredService<IDbContextFactory<TContext>>().CreateDbContext()
+            /*disposeAsync: (provider, ctx) => ctx.DisposeAsync()*/);
 
         return descriptor;
     }

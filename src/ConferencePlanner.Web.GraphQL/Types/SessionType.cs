@@ -39,7 +39,7 @@ public class SessionType : ObjectType<Session>
     internal class SessionResolvers
     {
         public async Task<IEnumerable<Speaker>> GetSpeakersAsync(
-            Session session,
+            [Parent] Session session,
             [ScopedService] ConferencePlannerDbContext context,
             SpeakerByIdDataLoader speakerById,
             CancellationToken cancellationToken)

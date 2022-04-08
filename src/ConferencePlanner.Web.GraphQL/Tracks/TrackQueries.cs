@@ -10,9 +10,9 @@ namespace ConferencePlanner.Web.GraphQL.Tracks;
 public class TrackQueries
 {
     [UseConferencePlannerDbContext]
-    public async Task<IEnumerable<Track>> GetTracksAsync(
-        [ScopedService] ConferencePlannerDbContext context,
-        CancellationToken cancellationToken) => await context.Tracks.ToListAsync(cancellationToken);
+    [UsePaging]
+    public IQueryable<Track> GetTracks(
+        [ScopedService] ConferencePlannerDbContext context) => context.Tracks.OrderBy(t => t.Name);
 
     [UseConferencePlannerDbContext]
     public Task<Track> GetTrackByNameAsync(

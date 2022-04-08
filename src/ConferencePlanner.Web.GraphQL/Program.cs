@@ -13,6 +13,8 @@ builder.Services
     .AddMutations()
     .AddTypes()
     .AddGlobalObjectIdentification()
+    .AddFiltering()
+    .AddSorting()
     .AddDataLoaders();
 
 var app = builder.Build();

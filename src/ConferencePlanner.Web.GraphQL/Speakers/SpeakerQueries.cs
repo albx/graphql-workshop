@@ -2,7 +2,6 @@
 using ConferencePlanner.Data.Persistence;
 using ConferencePlanner.Web.GraphQL.DataLoader;
 using ConferencePlanner.Web.GraphQL.Extensions;
-using Microsoft.EntityFrameworkCore;
 
 namespace ConferencePlanner.Web.GraphQL.Speakers;
 
@@ -10,7 +9,9 @@ namespace ConferencePlanner.Web.GraphQL.Speakers;
 public class SpeakerQueries
 {
     [UseConferencePlannerDbContext]
-    public Task<List<Speaker>> GetSpeakers([ScopedService] ConferencePlannerDbContext context) => context.Speakers.ToListAsync();
+    [UsePaging]
+    public IQueryable<Speaker> GetSpeakers(
+        [ScopedService] ConferencePlannerDbContext context) => context.Speakers.OrderBy(s => s.Name);
 
     public Task<Speaker> GetSpeakerByIdAsync(
         [ID(nameof(Speaker))] int id,

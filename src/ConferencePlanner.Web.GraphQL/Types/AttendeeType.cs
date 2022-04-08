@@ -25,7 +25,7 @@ public class AttendeeType : ObjectType<Attendee>
     internal class AttendeeResolvers
     {
         public async Task<IEnumerable<Session>> GetSessionsAsync(
-            Attendee attendee,
+            [Parent] Attendee attendee,
             [ScopedService] ConferencePlannerDbContext context,
             SessionByIdDataLoader sessionById,
             CancellationToken cancellationToken)

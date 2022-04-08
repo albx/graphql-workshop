@@ -2,7 +2,7 @@
 using ConferencePlanner.Data.Persistence;
 using ConferencePlanner.Web.GraphQL.DataLoader;
 using ConferencePlanner.Web.GraphQL.Extensions;
-using Microsoft.EntityFrameworkCore;
+using ConferencePlanner.Web.GraphQL.Types;
 
 namespace ConferencePlanner.Web.GraphQL.Sessions;
 
@@ -10,10 +10,11 @@ namespace ConferencePlanner.Web.GraphQL.Sessions;
 public class SessionQueries
 {
     [UseConferencePlannerDbContext]
-    public async Task<IEnumerable<Session>> GetSessionsAsync(
-        [ScopedService] ConferencePlannerDbContext context,
-        CancellationToken cancellationToken) =>
-        await context.Sessions.ToListAsync(cancellationToken);
+    [UsePaging(typeof(NonNullType<SessionType>))]
+    [UseFiltering(typeof(SessionFilterInputType))]
+    [UseSorting]
+    public IQueryable<Session> GetSessions(
+        [ScopedService] ConferencePlannerDbContext context) => context.Sessions;
 
     public Task<Session> GetSessionByIdAsync(
         [ID(nameof(Session))] int id,
