@@ -3,17 +3,15 @@ using ConferencePlanner.Web.GraphQL.Common;
 
 namespace ConferencePlanner.Web.GraphQL.Speakers;
 
-public class AddSpeakerPayload : Payload
+public class AddSpeakerPayload : SpeakerPayloadBase
 {
     public AddSpeakerPayload(Speaker speaker)
+        : base(speaker)
     {
-        Speaker = speaker;
     }
 
     public AddSpeakerPayload(IReadOnlyList<UserError> errors)
         : base(errors)
     {
     }
-
-    public Speaker? Speaker { get; }
 }

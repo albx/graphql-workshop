@@ -1,8 +1,5 @@
 using ConferencePlanner.Data.Persistence;
 using ConferencePlanner.Web.GraphQL;
-using ConferencePlanner.Web.GraphQL.DataLoader;
-using ConferencePlanner.Web.GraphQL.Speakers;
-using ConferencePlanner.Web.GraphQL.Types;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,17 +9,15 @@ builder.Services.AddPooledDbContextFactory<ConferencePlannerDbContext>(
 
 builder.Services
     .AddGraphQLServer()
-    .AddQueryType<Query>()
-    .AddMutationType(m => m.Name("Mutation"))
-    .AddTypeExtension<SpeakerMutations>()
-    .AddType<SpeakerType>()
+    .AddQueries()
+    .AddMutations()
+    .AddTypes()
     .AddGlobalObjectIdentification()
-    .AddDataLoader<SpeakerByIdDataLoader>()
-    .AddDataLoader<SessionByIdDataLoader>();
+    .AddDataLoaders();
 
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => "Hello GraphQL!");
 app.MapGraphQL();
 
 app.Run();

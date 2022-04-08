@@ -1,17 +1,15 @@
 ﻿using ConferencePlanner.Data.Models;
 using ConferencePlanner.Data.Persistence;
+using ConferencePlanner.Web.GraphQL.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace ConferencePlanner.Web.GraphQL.DataLoader;
 
-public class SessionByIdDataLoader : BatchDataLoader<int, Session>
+public class SessionByIdDataLoader : BaseBatchDataLoader<int, Session>
 {
-    private readonly IDbContextFactory<ConferencePlannerDbContext> contextFactory;
-
-    public SessionByIdDataLoader(IBatchScheduler batchScheduler, IDbContextFactory<ConferencePlannerDbContext> contextFactory)
-        : base(batchScheduler)
+    public SessionByIdDataLoader(IDbContextFactory<ConferencePlannerDbContext> contextFactory, IBatchScheduler batchScheduler)
+        : base(contextFactory, batchScheduler)
     {
-        this.contextFactory = contextFactory ?? throw new ArgumentNullException(nameof(contextFactory));
     }
 
     protected override async Task<IReadOnlyDictionary<int, Session>> LoadBatchAsync(IReadOnlyList<int> keys, CancellationToken cancellationToken)
