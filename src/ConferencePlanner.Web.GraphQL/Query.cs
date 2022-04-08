@@ -11,6 +11,8 @@ public class Query
     [UseConferencePlannerDbContext]
     public Task<List<Speaker>> GetSpeakers([ScopedService] ConferencePlannerDbContext context) => context.Speakers.ToListAsync();
 
-    public Task<Speaker> GetSpeakerAsync(int id, SpeakerByIdDataLoader dataLoader, CancellationToken cancellationToken)
-        => dataLoader.LoadAsync(id, cancellationToken);
+    public Task<Speaker?> GetSpeakerAsync(
+        [ID(nameof(Speaker))] int id,
+        SpeakerByIdDataLoader dataLoader,
+        CancellationToken cancellationToken) => dataLoader.LoadAsync(id, cancellationToken);
 }

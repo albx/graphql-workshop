@@ -1,6 +1,7 @@
 using ConferencePlanner.Data.Persistence;
 using ConferencePlanner.Web.GraphQL;
 using ConferencePlanner.Web.GraphQL.DataLoader;
+using ConferencePlanner.Web.GraphQL.Speakers;
 using ConferencePlanner.Web.GraphQL.Types;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,8 +13,10 @@ builder.Services.AddPooledDbContextFactory<ConferencePlannerDbContext>(
 builder.Services
     .AddGraphQLServer()
     .AddQueryType<Query>()
-    .AddMutationType<Mutation>()
+    .AddMutationType(m => m.Name("Mutation"))
+    .AddTypeExtension<SpeakerMutations>()
     .AddType<SpeakerType>()
+    .AddGlobalObjectIdentification()
     .AddDataLoader<SpeakerByIdDataLoader>()
     .AddDataLoader<SessionByIdDataLoader>();
 

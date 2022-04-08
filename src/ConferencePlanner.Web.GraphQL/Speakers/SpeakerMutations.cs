@@ -2,9 +2,10 @@
 using ConferencePlanner.Data.Persistence;
 using ConferencePlanner.Web.GraphQL.Extensions;
 
-namespace ConferencePlanner.Web.GraphQL;
+namespace ConferencePlanner.Web.GraphQL.Speakers;
 
-public class Mutation
+[ExtendObjectType("Mutation")]
+public class SpeakerMutations
 {
     [UseConferencePlannerDbContext]
     public async Task<AddSpeakerPayload> AddSpeakerAsync(

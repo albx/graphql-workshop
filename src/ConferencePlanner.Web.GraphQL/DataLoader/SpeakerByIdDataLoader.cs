@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ConferencePlanner.Web.GraphQL.DataLoader;
 
-public class SpeakerByIdDataLoader : BatchDataLoader<int, Speaker>
+public class SpeakerByIdDataLoader : BatchDataLoader<int, Speaker?>
 {
     private readonly IDbContextFactory<ConferencePlannerDbContext> contextFactory;
 
@@ -14,7 +14,7 @@ public class SpeakerByIdDataLoader : BatchDataLoader<int, Speaker>
         this.contextFactory = contextFactory ?? throw new ArgumentNullException(nameof(contextFactory));
     }
 
-    protected override async Task<IReadOnlyDictionary<int, Speaker>> LoadBatchAsync(IReadOnlyList<int> keys, CancellationToken cancellationToken)
+    protected override async Task<IReadOnlyDictionary<int, Speaker?>> LoadBatchAsync(IReadOnlyList<int> keys, CancellationToken cancellationToken)
     {
         await using var context = contextFactory.CreateDbContext();
 
