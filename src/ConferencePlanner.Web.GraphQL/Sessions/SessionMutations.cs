@@ -2,6 +2,7 @@
 using ConferencePlanner.Data.Persistence;
 using ConferencePlanner.Web.GraphQL.Common;
 using ConferencePlanner.Web.GraphQL.Extensions;
+using HotChocolate.Subscriptions;
 
 namespace ConferencePlanner.Web.GraphQL.Sessions;
 
@@ -49,7 +50,8 @@ public class SessionMutations
     [UseConferencePlannerDbContext]
     public async Task<ScheduleSessionPayload> ScheduleSessionAsync(
         ScheduleSessionInput input,
-        [ScopedService] ConferencePlannerDbContext context)
+        [ScopedService] ConferencePlannerDbContext context,
+        [Service] ITopicEventSender sender)
     {
         if (input.EndTime < input.StartTime)
         {
@@ -70,6 +72,8 @@ public class SessionMutations
         session.EndTime = input.EndTime;
 
         await context.SaveChangesAsync();
+
+        await sender.SendAsync(nameof(SessionSubscriptions.OnSessionScheduledAsync), session.Id);
 
         return new ScheduleSessionPayload(session);
     }

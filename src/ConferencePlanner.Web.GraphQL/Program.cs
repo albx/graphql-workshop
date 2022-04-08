@@ -11,13 +11,18 @@ builder.Services
     .AddGraphQLServer()
     .AddQueries()
     .AddMutations()
+    .AddSubscriptions()
     .AddTypes()
     .AddGlobalObjectIdentification()
     .AddFiltering()
     .AddSorting()
+    .AddInMemorySubscriptions()
     .AddDataLoaders();
 
 var app = builder.Build();
+
+app.UseWebSockets();
+app.UseRouting();
 
 app.MapGet("/", () => "Hello GraphQL!");
 app.MapGraphQL();

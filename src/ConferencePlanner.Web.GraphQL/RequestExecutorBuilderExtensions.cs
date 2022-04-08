@@ -1,4 +1,5 @@
-﻿using ConferencePlanner.Web.GraphQL.DataLoader;
+﻿using ConferencePlanner.Web.GraphQL.Attendees;
+using ConferencePlanner.Web.GraphQL.DataLoader;
 using ConferencePlanner.Web.GraphQL.Sessions;
 using ConferencePlanner.Web.GraphQL.Speakers;
 using ConferencePlanner.Web.GraphQL.Tracks;
@@ -15,7 +16,8 @@ public static class RequestExecutorBuilderExtensions
             .AddQueryType(q => q.Name("Query"))
             .AddTypeExtension<SpeakerQueries>()
             .AddTypeExtension<SessionQueries>()
-            .AddTypeExtension<TrackQueries>();
+            .AddTypeExtension<TrackQueries>()
+            .AddTypeExtension<AttendeeQueries>();
 
         return builder;
     }
@@ -26,7 +28,8 @@ public static class RequestExecutorBuilderExtensions
             .AddMutationType(m => m.Name("Mutation"))
             .AddTypeExtension<SpeakerMutations>()
             .AddTypeExtension<SessionMutations>()
-            .AddTypeExtension<TrackMutations>();
+            .AddTypeExtension<TrackMutations>()
+            .AddTypeExtension<AttendeeMutations>();
 
         return builder;
     }
@@ -49,6 +52,16 @@ public static class RequestExecutorBuilderExtensions
             .AddDataLoader<SessionByIdDataLoader>()
             .AddDataLoader<AttendeeByIdDataLoader>()
             .AddDataLoader<TrackByIdDataLoader>();
+
+        return builder;
+    }
+
+    public static IRequestExecutorBuilder AddSubscriptions(this IRequestExecutorBuilder builder)
+    {
+        builder
+            .AddSubscriptionType(s => s.Name("Subscription"))
+            .AddTypeExtension<SessionSubscriptions>()
+            .AddTypeExtension<AttendeeSubscriptions>();
 
         return builder;
     }
