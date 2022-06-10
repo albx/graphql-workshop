@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1B36B6D1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferencePlanner.Web.GraphQL.Test", "tests\ConferencePlanner.Web.GraphQL.Test\ConferencePlanner.Web.GraphQL.Test.csproj", "{F4B07634-5906-4133-8B45-EA7FA5D69326}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferencePlanner.Web.Client", "src\ConferencePlanner.Web.Client\ConferencePlanner.Web.Client.csproj", "{436E7F31-3649-457B-ABC5-08134E8DAFE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{F4B07634-5906-4133-8B45-EA7FA5D69326}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4B07634-5906-4133-8B45-EA7FA5D69326}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4B07634-5906-4133-8B45-EA7FA5D69326}.Release|Any CPU.Build.0 = Release|Any CPU
+		{436E7F31-3649-457B-ABC5-08134E8DAFE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{436E7F31-3649-457B-ABC5-08134E8DAFE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{436E7F31-3649-457B-ABC5-08134E8DAFE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{436E7F31-3649-457B-ABC5-08134E8DAFE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{6436FFFB-64DD-4297-8DB8-F8B9FB1DD45F} = {BC456248-18D5-4406-AB95-7BB9A96DD7F4}
 		{F76676AB-876F-487C-97C6-F28122D25642} = {BC456248-18D5-4406-AB95-7BB9A96DD7F4}
 		{F4B07634-5906-4133-8B45-EA7FA5D69326} = {1B36B6D1-8545-42C4-8EF8-C916E8F183D8}
+		{436E7F31-3649-457B-ABC5-08134E8DAFE6} = {BC456248-18D5-4406-AB95-7BB9A96DD7F4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {244D6ADF-F432-4B6D-892B-41642B5A892C}
