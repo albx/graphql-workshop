@@ -1,0 +1,61 @@
+@page "/speakers/register"
+@using System.ComponentModel.DataAnnotations
+
+<PageTitle>Register new speaker</PageTitle>
+
+<h1>Register new speaker</h1>
+
+<div class="row mt-2">
+    <div class="col-md-12">
+        <a href="speakers" class="btn btn-primary">back to list</a>
+    </div>
+</div>
+<hr />
+
+<EditForm Model="model" role="form" OnValidSubmit="RegisterNewSpeaker">
+    <DataAnnotationsValidator />
+
+    <div class="form-group mb-3">
+        <label>Name</label>
+        <InputText @bind-Value="model.Name" class="form-control" />
+        <ValidationMessage For="@(() => model.Name)" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label>Website</label>
+        <InputText @bind-Value="model.Website" class="form-control" />
+        <ValidationMessage For="@(() => model.Website)" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label>Bio</label>
+        <InputTextArea @bind-Value="model.Bio" class="form-control" />
+        <ValidationMessage For="@(() => model.Bio)" />
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="button" @onclick="Cancel" class="btn btn-outline-primary">Cancel</button>
+    </div>
+</EditForm>
+
+@code {
+    private ViewModel model = new();
+
+    void Cancel() => model = new();
+
+    async Task RegisterNewSpeaker() 
+    {
+        //TODO
+    }
+
+    class ViewModel 
+    {
+        [Required]
+        public string Name { get; set; } = string.Empty;
+
+        public string? Bio { get; set; }
+
+        public string? Website { get; set; }
+    }
+}
