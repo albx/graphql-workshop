@@ -1,9 +1,0 @@
-query GetSpeakers {
-  speakers {
-    nodes {
-      name,
-      webSite,
-      sessions { id }
-    }
-  }
-}
